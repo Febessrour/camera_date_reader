@@ -6,20 +6,16 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tess
 # pytesseract.pytesseract.tesseract_cmd = 'System_path_to_tesseract.exe'
 
 # Read image from which text needs to be extracted
-img = cv2.imread("test1.jpg")
+img = cv2.imread("test2.jpg")
 h, w, c = img.shape
-print(h,w,c)
-cropped_image = img[370:500, 430:600] # Slicing to crop the image
-# Display the cropped image
-cv2.imshow("cropped", cropped_image)
-cv2.waitKey(0)
+img = img[250:400, 400:600] # Slicing to crop the image
 
 assert img is not None, "image not loaded properly"
 # Preprocessing the image starts
 
 # Convert the image to gray scale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-cv2.imshow("gray",gray)
+
 # Performing OTSU threshold
 ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
 
@@ -62,7 +58,6 @@ for cnt in contours:
     cv2.waitKey(0)
     # Open the file in append mode
     file = open("recognized.txt", "a")
-     
     # Apply OCR on the cropped image
     text = pytesseract.image_to_string(cropped)
     print(text)
