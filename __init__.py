@@ -10,7 +10,7 @@ img = cv2.imread("test2.jpg")
 h, w, c = img.shape
 img = img[250:400, 400:600] # Slicing to crop the image
 
-assert img is not None, "image not loaded properly"
+assert img is not None, "image not loaded properly, please input a better image"
 # Preprocessing the image starts
 
 # Convert the image to gray scale
