@@ -67,3 +67,5 @@ for cnt in contours:
      
     # Close the file
     file.close
+
+    #Comment random
